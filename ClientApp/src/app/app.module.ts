@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 // services
-import { MakeService } from './services/make.service'
+import { VehicleService } from './services/vehicle.service';
 
 // components
 import { AppComponent } from './app.component';
@@ -32,9 +32,7 @@ import { AppRoutingModule } from './routing/app-routing.module';
     FormsModule,
     AppRoutingModule
   ],
-  providers: [
-    MakeService
-  ],
+  providers: [VehicleService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
