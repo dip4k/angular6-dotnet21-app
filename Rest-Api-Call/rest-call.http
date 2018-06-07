@@ -4,20 +4,34 @@ POST {{url}}/api/vehicles HTTP/1.1
 content-type: application/json
 
 {
-    "modelId":1,
+    "modelId":9,
     "isRegistered": true,
     contact:{
-        "name": "sample",
-    "phone": "9087654321",
+        "name": "sample-new",
+    "phone": "9087651321",
     "email": "dip4k@github.io"
     },
     features:[1,2,3]
 }
 
 ###
+PUT  {{url}}/api/vehicles/3 HTTP/1.1
+content-type: application/json
 
+{
+    "modelId":2,
+    "isRegistered": true,
+    contact:{
+        "name": "sample-update",
+    "phone": "9087654381",
+    "email": "dip4k@hackerearth.com"
+    },
+    features:[1,2,3]
+}
 
-GET {{url}}/api/vehicles/3
+###
+
+GET {{url}}/api/vehicles/6
 
 ###
 DELETE {{url}}/api/vehicles/2

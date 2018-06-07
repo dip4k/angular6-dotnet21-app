@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace WebApplication2.Models
+namespace WebApplication2.Core.Models
 {
   public class Make
   {

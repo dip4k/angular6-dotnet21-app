@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using WebApplication2.Core;
 using WebApplication2.Data;
 
 namespace WebApplication2
@@ -28,9 +29,15 @@ namespace WebApplication2
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
+      services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
       services.AddAutoMapper();
       services.AddDbContext<VegaDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
-      services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+      // dependency injection
+      services.AddScoped<IVehicleRepository, VehicleRepository>();
+      services.AddScoped<IUnitOfWork, UnitOfWork>();
+
 
       // In production, the Angular files will be served from this directory
       services.AddSpaStaticFiles(configuration =>

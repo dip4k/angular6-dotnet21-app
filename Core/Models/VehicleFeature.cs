@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace WebApplication2.Models
+namespace WebApplication2.Core.Models
 {
   [Table("VehicleFeatures")]
   public class VehicleFeature
