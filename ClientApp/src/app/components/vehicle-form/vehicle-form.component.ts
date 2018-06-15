@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { VehicleService } from '../../services/vehicle.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-vehicle-form',
@@ -15,7 +16,10 @@ export class VehicleFormComponent implements OnInit {
     contact: {}
   };
   features;
-  constructor(private vehicleService: VehicleService) {}
+  constructor(
+    private vehicleService: VehicleService,
+    private _toaster: ToastrService
+  ) {}
 
   ngOnInit() {
     this.vehicleService.getMakes().subscribe((res) => {
@@ -47,6 +51,10 @@ export class VehicleFormComponent implements OnInit {
     console.log(this.vehicle);
     console.log('submit is called');
     this.vehicleService.createVehicle(this.vehicle).subscribe((res) => {
+      this._toaster.success(
+        'Vehicle created successfully with id :' + res['id'],
+        'Success'
+      );
       console.log('res : ' + JSON.stringify(res, undefined, 2));
     });
   }
