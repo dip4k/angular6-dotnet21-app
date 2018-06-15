@@ -1,7 +1,13 @@
 import { ToastrService } from 'ngx-toastr';
-import { ErrorHandler, Injectable, Injector, NgZone } from '@angular/core';
+import {
+  ErrorHandler,
+  Injectable,
+  Injector,
+  NgZone,
+  isDevMode
+} from '@angular/core';
 import { ErrorLogService } from '../services/error.log.service';
-import { RollbarService } from '../app.module';
+import { RollbarService } from '../Rollbar/rollbar.config.service';
 
 @Injectable()
 export class AppErrorHandler implements ErrorHandler {
@@ -9,12 +15,14 @@ export class AppErrorHandler implements ErrorHandler {
   constructor(private ngZone: NgZone, private injector: Injector) {}
   handleError(error: any): void {
     // use of injector to get services
-    const _rollbar = this.injector.get(RollbarService);
+    if (!isDevMode()) {
+      const _rollbar = this.injector.get(RollbarService);
+      _rollbar.error(error.originalError || error);
+    }
     const _errorLogService = this.injector.get(ErrorLogService);
+    _errorLogService.logError(error);
     const _toasty = this.injector.get(ToastrService);
     this.ngZone.run(() => {
-      _errorLogService.logError(error);
-      _rollbar.error(error.originalError || error);
       _toasty.error('Unexpected Error Occured', 'Error');
     });
   }

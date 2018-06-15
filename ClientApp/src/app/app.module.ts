@@ -1,7 +1,6 @@
 // modules
-import * as Rollbar from 'rollbar';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, ErrorHandler, InjectionToken } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './routing/app-routing.module';
@@ -22,18 +21,11 @@ import { FetchDataComponent } from './components/fetch-data/fetch-data.component
 import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.component';
 import { ErrorLogService } from './services/error.log.service';
 
-// constants
-const rollbarConfig = {
-  accessToken: '9a3c8a3a4e9345cf938d510534aeb2bb',
-  captureUncaught: true,
-  captureUnhandledRejections: true
-};
-
-export function rollbarFactory() {
-  return new Rollbar(rollbarConfig);
-}
-
-export const RollbarService = new InjectionToken<Rollbar>('rollbar');
+// rollbar imports
+import {
+  RollbarService,
+  rollbarFactory
+} from './Rollbar/rollbar.config.service';
 
 @NgModule({
   declarations: [

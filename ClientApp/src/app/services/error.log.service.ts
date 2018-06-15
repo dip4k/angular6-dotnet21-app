@@ -8,21 +8,52 @@ export class ErrorLogService {
     const date = new Date().toISOString();
     if (error instanceof HttpErrorResponse) {
       console.error(
-        date,
-        'There was an HTTP error.',
-        error.message,
-        'Status code:',
-        (<HttpErrorResponse>error).status
+        JSON.stringify(
+          {
+            date,
+            errorType: 'There was an HTTP error.',
+            errorMessage: error.message,
+            statusCode: (<HttpErrorResponse>error).status
+          },
+          undefined,
+          2
+        )
       );
     } else if (error instanceof TypeError) {
-      console.error(date, 'There was a Type error.', error.message);
+      console.error(
+        JSON.stringify(
+          {
+            date,
+            type: 'There was a Type error.',
+            message: error.message
+          },
+          undefined,
+          2
+        )
+      );
     } else if (error instanceof Error) {
-      console.error(date, 'There was a general error.', error.message);
+      console.error(
+        JSON.stringify(
+          {
+            date,
+            type: 'There was a general error.',
+            message: error.message
+          },
+          undefined,
+          2
+        )
+      );
     } else {
       console.error(
-        date,
-        'Nobody threw an Error but something happened!',
-        error
+        JSON.stringify(
+          {
+            date,
+            type: 'Nobody threw an Error but something happened!',
+            error
+          },
+          undefined,
+          2
+        )
       );
     }
   }

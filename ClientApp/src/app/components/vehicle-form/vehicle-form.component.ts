@@ -27,7 +27,6 @@ export class VehicleFormComponent implements OnInit {
     });
 
     this.vehicleService.getFeatures().subscribe((res) => {
-      console.log(res);
       this.features = res;
     });
   }
@@ -48,14 +47,11 @@ export class VehicleFormComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.vehicle);
-    console.log('submit is called');
     this.vehicleService.createVehicle(this.vehicle).subscribe((res) => {
       this._toaster.success(
         'Vehicle created successfully with id :' + res['id'],
         'Success'
       );
-      console.log('res : ' + JSON.stringify(res, undefined, 2));
     });
   }
 }
