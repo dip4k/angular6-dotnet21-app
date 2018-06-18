@@ -1,3 +1,4 @@
+import { VehicleListComponent } from './../components/vehicle-list/vehicle-list.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -7,9 +8,10 @@ import { FetchDataComponent } from '../components/fetch-data/fetch-data.componen
 import { VehicleFormComponent } from '../components/vehicle-form/vehicle-form.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent, pathMatch: 'full' },
+  { path: '', redirectTo: 'vehicles', pathMatch: 'full' },
   { path: 'counter', component: CounterComponent },
   { path: 'fetch-data', component: FetchDataComponent },
+  { path: 'vehicles', component: VehicleListComponent },
   { path: 'vehicles/new', component: VehicleFormComponent },
   { path: 'vehicles/:id', component: VehicleFormComponent }
 ];

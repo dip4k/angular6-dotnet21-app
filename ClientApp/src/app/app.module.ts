@@ -26,6 +26,7 @@ import {
   RollbarService,
   rollbarFactory
 } from './Rollbar/rollbar.config.service';
+import { VehicleListComponent } from './components/vehicle-list/vehicle-list.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import {
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    VehicleFormComponent
+    VehicleFormComponent,
+    VehicleListComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

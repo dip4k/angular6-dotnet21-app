@@ -1,0 +1,44 @@
+<div class="container">
+  <h3>Vehicles</h3>
+  <div class="form-group">
+    <button class="btn btn-primary" [routerLink]='["/vehicles/new"]'>
+      Add New Vehicle
+    </button>
+  </div>
+  <table class="table">
+    <thead class="thead-light text-center">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Model</th>
+        <th scope="col">Make</th>
+        <th scope="col">Registered</th>
+        <th scope="col">Features</th>
+        <th scope="col">Name</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Email</th>
+        <th scope="col">&nbsp;</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let v of vehicles">
+        <th scope="row"> {{v.id}} </th>
+        <td>{{ v.model.name }}</td>
+        <td>{{ v.make.name }}</td>
+        <td> {{v.isRegistered?'Yes':'No'}} </td>
+        <td>
+          <ul class="list">
+            <li *ngFor="let f of v.features" class="list-item"> {{f.name}} </li>
+          </ul>
+        </td>
+        <td> {{v.contact.name}} </td>
+        <td> {{v.contact.phone}} </td>
+        <td> {{v.contact.email}} </td>
+        <td>
+          <a class="btn btn-link" [routerLink]='["/vehicles/",v.id]'>Edit</a>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>

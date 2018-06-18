@@ -38,10 +38,7 @@ export class VehicleFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    const sources = [
-      this.vehicleService.getMakes(),
-      this.vehicleService.getFeatures()
-    ];
+    const sources = [this.vehicleService.getMakes(), this.vehicleService.getFeatures()];
 
     if (this.vehicle.id) {
       sources.push(this.vehicleService.getVehicle(this.vehicle.id));

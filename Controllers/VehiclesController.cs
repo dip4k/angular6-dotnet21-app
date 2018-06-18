@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using WebApplication2.Controllers.Resources;
 using WebApplication2.Core.Models;
 using WebApplication2.Core;
+using System.Collections.Generic;
 
 namespace WebApplication2.Controllers
 {
@@ -101,5 +102,14 @@ namespace WebApplication2.Controllers
       return Ok(vehicleResource);
     }
 
+    [HttpGet]
+    public async Task<IActionResult> GetVehicles()
+    {
+      var vehicleList = await _repository.GetVehiclesAsync();
+
+      var result = _mapper.Map<IEnumerable<Vehicle>, IEnumerable<VehicleResource>>(vehicleList);
+
+      return Ok(result);
+    }
   }
 }

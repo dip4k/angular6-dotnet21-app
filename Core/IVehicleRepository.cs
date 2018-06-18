@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using WebApplication2.Core.Models;
 
 namespace WebApplication2.Core
@@ -10,5 +11,7 @@ namespace WebApplication2.Core
     void Add(Vehicle vehicle);
 
     void Remove(Vehicle vehicle);
+
+    Task<IEnumerable<Vehicle>> GetVehiclesAsync();
   }
 }
