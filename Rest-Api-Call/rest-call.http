@@ -42,6 +42,9 @@ GET {{url}}/api/makes HTTP/1.1
 
 ###
 
+GET {{url}}/api/vehicles
+###
+
 GET https://localhost:44343/api/makes
 ###
 GET {{url}}/api/features HTTP/1.1
