@@ -99,6 +99,9 @@ export class VehicleFormComponent implements OnInit {
           'Vehicle updated successfully with id :' + res['id'],
           'Success'
         );
+        setTimeout(() => {
+          this.router.navigate([ '/' ]);
+        }, 5000);
       });
     } else {
       console.log('inside create');
@@ -109,6 +112,9 @@ export class VehicleFormComponent implements OnInit {
             'Vehicle created successfully with id :' + res['id'],
             'Success'
           );
+          setTimeout(() => {
+            this.router.navigate([ '/' ]);
+          }, 5000);
         },
         (error) => {
           console.log(error);
