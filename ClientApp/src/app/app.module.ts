@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { AppRoutingModule } from './routing/app-routing.module';
+import { AppRoutingModule } from './app.routes';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
@@ -20,13 +20,10 @@ import { CounterComponent } from './components/counter/counter.component';
 import { FetchDataComponent } from './components/fetch-data/fetch-data.component';
 import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.component';
 import { ErrorLogService } from './services/error.log.service';
+import { VehicleListComponent } from './components/vehicle-list/vehicle-list.component';
 
 // rollbar imports
-import {
-  RollbarService,
-  rollbarFactory
-} from './Rollbar/rollbar.config.service';
-import { VehicleListComponent } from './components/vehicle-list/vehicle-list.component';
+import { RollbarService, rollbarFactory } from './Rollbar/rollbar.config.service';
 
 @NgModule({
   declarations: [
